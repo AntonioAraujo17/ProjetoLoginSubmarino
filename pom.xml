@@ -17,13 +17,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.easetech/easytest-core -->
-        <dependency>
-            <groupId>org.easetech</groupId>
-            <artifactId>easytest-core</artifactId>
-            <version>1.4.0</version>
-        </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -31,18 +24,38 @@
             <version>3.6.0</version>
         </dependency>
         
-<dependency>
+<!-- <dependency>
         <groupId>info.cukes</groupId>
         <artifactId>cucumber-java</artifactId>
         <version>1.2.0</version>
         <scope>test</scope>
-    </dependency>
-
-    <dependency>
+    </dependency> 
+    
+        <dependency>
         <groupId>info.cukes</groupId>
         <artifactId>cucumber-junit</artifactId>
         <version>1.2.0</version>
     </dependency>
+    
+    -->
+
+<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+<dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-java</artifactId>
+    <version>2.4.0</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+<dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-junit</artifactId>
+    <version>2.4.0</version>
+    <scope>test</scope>
+</dependency>
+
+
+
         
         
     </dependencies>

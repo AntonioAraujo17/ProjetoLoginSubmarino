@@ -20,7 +20,7 @@ public class logar {
 	@Given("^Que eu esteja na pagina do Submarino$")
 	
 	public void que_eu_esteja_na_pagina_do_Submarino() throws Throwable {
-		System.setProperty("webdriver.chrome.driver", "src\\test\\java\\suporte\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "src\\test\\java\\utils\\chromedriver.exe");
         navegador = new ChromeDriver();
        navegador.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 
