@@ -3,9 +3,9 @@ url: https://www.submarino.com.br/
 hoverLogin: h_user
 botaoEntrar: h_usr-signin
 campoEmail: email-input
-email: willianstech@gmail.com
+email: testeloginsubmarino@gmail.com
 campoSenha: password
-senha: 653498ww
+senha: 12345Teste
 botaoContinuar: login-button
 emailIncorreto: 45893513822@gmail.com   
    
