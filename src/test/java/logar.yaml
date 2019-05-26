@@ -1,0 +1,11 @@
+#findElement(By.id("h_user")) testar assim depois
+url: https://www.submarino.com.br/
+hoverLogin: h_user
+botaoEntrar: h_usr-signin
+campoEmail: email-input
+email: willianstech@gmail.com
+campoSenha: password
+senha: 653498ww
+botaoContinuar: login-button
+emailIncorreto: 45893513822@gmail.com   
+   
