@@ -7,5 +7,6 @@ email: testeloginsubmarino@gmail.com
 campoSenha: password
 senha: 12345Teste
 botaoContinuar: login-button
-emailIncorreto: 45893513822@gmail.com   
+emailIncorreto: 45893513822@gmail.com
+mensagemErro: entrar-formError --zeroLeft
    

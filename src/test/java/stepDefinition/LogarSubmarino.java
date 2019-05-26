@@ -15,7 +15,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
-import classes.pages.submarino;
+import classes.pages.SubmarinoPage;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
@@ -24,9 +24,14 @@ import cucumber.runtime.CucumberException;
 public class LogarSubmarino {
 
 	ChromeDriver navegador;
-	Yaml yaml = new Yaml(new Constructor(submarino.class));
+	Yaml yaml = new Yaml(new Constructor(SubmarinoPage.class));
 	InputStream input = this.getClass().getClassLoader().getResourceAsStream("logar.yaml");
-	submarino site = yaml.load(input);
+	SubmarinoPage site = yaml.load(input);
+
+	public void aguardarRealizarCaptcha() {
+		JOptionPane.showMessageDialog(null,
+				"Por favor, preencha o captcha e depois clique no botão 'OK' para continuar");
+	}
 
 	@Dado("^que eu esteja na página inicial do Submarino$")
 	public void que_eu_esteja_na_pagina_inicial_do_Submarino() {
@@ -60,11 +65,10 @@ public class LogarSubmarino {
 	}
 
 	@Entao("^aparece a informação 'Ola' seguido de um nome escolhido pelo cliente$")
-	public void aparece_a_informação_Ola_seguido_de_um_nome_escolhido_pelo_cliente() {
+	public void aparece_a_informacao_Ola_seguido_de_um_nome_escolhido_pelo_cliente() {
 		try {
 
-			JOptionPane.showMessageDialog(null,
-					"Por favor, preencha o captcha e depois clique no bot�o 'OK' para continuar");
+			aguardarRealizarCaptcha();
 
 			String validador = navegador.findElement(By.className("usr-nick")).getText();
 
@@ -85,14 +89,14 @@ public class LogarSubmarino {
 		navegador.findElement(By.id(site.getCampoEmail())).sendKeys(site.getEmailIncorreto());
 		navegador.findElement(By.id(site.getCampoSenha())).sendKeys(site.getSenha());
 	}
-	
+
 	@Entao("^aparece a mensagem 'E-mail ou senha incorretos'$")
 	public void aparece_a_mensagem_E_mail_ou_senha_incorretos() throws Throwable {
 		try {
-			JOptionPane.showMessageDialog(null,
-					"Por favor, preencha o captcha e depois clique no bot�o 'OK' para continuar");
 
-			String validadorErro = navegador.findElement(By.className("entrar-formError --zeroLeft")).getText();
+			aguardarRealizarCaptcha();
+
+			String validadorErro = navegador.findElement(By.className(site.getMensagemErro())).getText();
 			assertEquals("E-mail ou senha incorretos", validadorErro);
 			System.out.println("passou no teste");
 		} catch (CucumberException e) {
@@ -102,7 +106,7 @@ public class LogarSubmarino {
 		}
 
 	}
-	
+
 	@Quando("^clicar em continuar$")
 	public void clicar_em_continuar() throws Throwable {
 		WebElement btn = navegador.findElement(By.id(site.getBotaoContinuar()));

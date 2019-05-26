@@ -1,6 +1,6 @@
 package classes.pages;
 
-public class submarino {
+public class SubmarinoPage {
 
 	private String url;
 	private String hoverLogin;
@@ -10,6 +10,15 @@ public class submarino {
 	private String campoSenha;
 	private String senha;
 	private String botaoContinuar;
+	private String mensagemErro;
+
+	public String getMensagemErro() {
+		return mensagemErro;
+	}
+
+	public void setMensagemErro(String mensagemErro) {
+		this.mensagemErro = mensagemErro;
+	}
 
 	public String getCampoSenha() {
 		return campoSenha;
