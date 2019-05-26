@@ -21,17 +21,15 @@ import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
 import cucumber.runtime.CucumberException;
 
-public class logar {
+public class LogarSubmarino {
 
 	ChromeDriver navegador;
-
 	Yaml yaml = new Yaml(new Constructor(submarino.class));
 	InputStream input = this.getClass().getClassLoader().getResourceAsStream("logar.yaml");
 	submarino site = yaml.load(input);
 
-	@Dado("^Que eu esteja na pagina do Submarino$")
-	public void que_eu_esteja_na_pagina_do_Submarino() throws Throwable {
-
+	@Dado("^que eu esteja na página inicial do Submarino$")
+	public void que_eu_esteja_na_pagina_inicial_do_Submarino() {
 		System.setProperty("webdriver.chrome.driver", "src\\test\\java\\utils\\chromedriver.exe");
 		navegador = new ChromeDriver();
 		navegador.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
@@ -41,7 +39,7 @@ public class logar {
 
 	}
 
-	@Quando("^acessar a pagina de login$")
+	@Quando("^acessar a página de login$")
 	public void acessar_a_pagina_de_login() throws Throwable {
 
 		Actions actions = new Actions(navegador);
@@ -54,30 +52,19 @@ public class logar {
 
 	}
 
-	@Quando("^clicar em continuar$")
-	public void clicar_em_continuar() throws Throwable {
-		WebElement btn = navegador.findElement(By.id(site.getBotaoContinuar()));
-		btn.click();
-	}
-
-	@Quando("^inserir minhas informacoes$")
-	public void inserirMinhasInformacoes() throws Throwable {
+	// Cenario de Sucesso
+	@Quando("^preencher minhas informações corretas$")
+	public void preencher_minhas_informacoes_corretas() {
 		navegador.findElement(By.id(site.getCampoEmail())).sendKeys(site.getEmail());
 		navegador.findElement(By.id(site.getCampoSenha())).sendKeys(site.getSenha());
 	}
 
-	@Quando("^inserir minhas informacoes incorretas$")
-	public void inserirMinhasInformacoesIncorretas() throws Throwable {
-		navegador.findElement(By.id(site.getCampoEmail())).sendKeys(site.getEmailIncorreto());
-		navegador.findElement(By.id(site.getCampoSenha())).sendKeys(site.getSenha());
-	}
-
-	@Entao("^aparece a informacao 'Ola Nome'$")
-	public void apareceAInformacaoOlaNome() throws Throwable {
+	@Entao("^aparece a informação 'Ola' seguido de um nome escolhido pelo cliente$")
+	public void aparece_a_informação_Ola_seguido_de_um_nome_escolhido_pelo_cliente() {
 		try {
-			
+
 			JOptionPane.showMessageDialog(null,
-					"Por favor, preencha o captcha e depois clique no bot�o 'OK' para continuar");
+					"Por favor, preencha o captcha e depois clique no bot�o 'OK' para continuar");
 
 			String validador = navegador.findElement(By.className("usr-nick")).getText();
 
@@ -87,16 +74,23 @@ public class logar {
 		} catch (CucumberException e) {
 			throw new CucumberException("Test Failed");
 		} finally {
-			 navegador.close();
+			navegador.close();
 		}
 
 	}
 
+	// Cenario de Falha
+	@Quando("^preencher minhas informações incorretas$")
+	public void preencher_minhas_informacoes_incorretas() throws Throwable {
+		navegador.findElement(By.id(site.getCampoEmail())).sendKeys(site.getEmailIncorreto());
+		navegador.findElement(By.id(site.getCampoSenha())).sendKeys(site.getSenha());
+	}
+	
 	@Entao("^aparece a mensagem 'E-mail ou senha incorretos'$")
 	public void aparece_a_mensagem_E_mail_ou_senha_incorretos() throws Throwable {
 		try {
 			JOptionPane.showMessageDialog(null,
-					"Por favor, preencha o captcha e depois clique no bot�o 'OK' para continuar");
+					"Por favor, preencha o captcha e depois clique no bot�o 'OK' para continuar");
 
 			String validadorErro = navegador.findElement(By.className("entrar-formError --zeroLeft")).getText();
 			assertEquals("E-mail ou senha incorretos", validadorErro);
@@ -107,6 +101,12 @@ public class logar {
 			navegador.close();
 		}
 
+	}
+	
+	@Quando("^clicar em continuar$")
+	public void clicar_em_continuar() throws Throwable {
+		WebElement btn = navegador.findElement(By.id(site.getBotaoContinuar()));
+		btn.click();
 	}
 
 }
