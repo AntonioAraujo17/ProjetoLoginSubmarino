@@ -15,7 +15,7 @@ Foi utilizado as seguintes tecnologias para o desenvolvimento:
 * [YAML] - Formato de codificação de dados legíveis por humanos.
 
 ## Tratamento utilizado para o Captcha
- Sobre o tratamento do captcha, foi criado um método chamado **aguardarRealizarCaptcha** que cria uma tela com a mensagem **"Por favor, preencha o captcha e depois clique no botão 'OK' para continuar"** e um botão OK.
+ Sobre o tratamento do captcha, foi criado um método chamado **aguardarRealizarCaptcha** que cria uma tela com a mensagem **"Por favor, preencha o captcha e depois clique no botão 'OK' para continuar"** e um botão OK que continua o teste.
 
 ## Criação dos Cenarios
 
